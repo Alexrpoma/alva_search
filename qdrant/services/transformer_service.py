@@ -12,7 +12,7 @@ class TransformerService:
             config = configparser.ConfigParser()
 
             try:
-                config.read('config.ini')
+                config.read('../config.ini')
                 transformer_model = config.get('TRANSFORMER', 'MODEL')
                 dim = config.getint('TRANSFORMER', 'DIM')
                 cls._instance.__encoder = SentenceTransformer(transformer_model, truncate_dim=dim)

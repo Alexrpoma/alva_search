@@ -1,0 +1,43 @@
+2025-03-23 19:28:26,132 - DEBUG - proactor_events - Using proactor: IocpProactor
+2025-03-23 19:28:56,139 - DEBUG - _trace - connect_tcp.started host='localhost' port=6333 local_address=None timeout=1000 socket_options=None
+2025-03-23 19:28:56,141 - DEBUG - _trace - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001B6D0995810>
+2025-03-23 19:28:56,141 - DEBUG - _trace - send_request_headers.started request=<Request [b'POST']>
+2025-03-23 19:28:56,141 - DEBUG - _trace - send_request_headers.complete
+2025-03-23 19:28:56,142 - DEBUG - _trace - send_request_body.started request=<Request [b'POST']>
+2025-03-23 19:28:56,142 - DEBUG - _trace - send_request_body.complete
+2025-03-23 19:28:56,142 - DEBUG - _trace - receive_response_headers.started request=<Request [b'POST']>
+2025-03-23 19:28:56,162 - DEBUG - _trace - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'transfer-encoding', b'chunked'), (b'content-encoding', b'gzip'), (b'content-type', b'application/json'), (b'vary', b'accept-encoding, Origin, Access-Control-Request-Method, Access-Control-Request-Headers'), (b'date', b'Sun, 23 Mar 2025 23:28:55 GMT')])
+2025-03-23 19:28:56,162 - DEBUG - _trace - receive_response_body.started request=<Request [b'POST']>
+2025-03-23 19:28:56,162 - DEBUG - _trace - receive_response_body.complete
+2025-03-23 19:28:56,163 - DEBUG - _trace - response_closed.started
+2025-03-23 19:28:56,163 - DEBUG - _trace - response_closed.complete
+2025-03-23 19:28:56,163 - DEBUG - _trace - close.started
+2025-03-23 19:28:56,163 - DEBUG - _trace - close.complete
+2025-03-23 19:31:15,019 - DEBUG - _trace - connect_tcp.started host='localhost' port=6333 local_address=None timeout=1000 socket_options=None
+2025-03-23 19:31:15,020 - DEBUG - _trace - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001B6D0961810>
+2025-03-23 19:31:15,020 - DEBUG - _trace - send_request_headers.started request=<Request [b'POST']>
+2025-03-23 19:31:15,020 - DEBUG - _trace - send_request_headers.complete
+2025-03-23 19:31:15,020 - DEBUG - _trace - send_request_body.started request=<Request [b'POST']>
+2025-03-23 19:31:15,021 - DEBUG - _trace - send_request_body.complete
+2025-03-23 19:31:15,021 - DEBUG - _trace - receive_response_headers.started request=<Request [b'POST']>
+2025-03-23 19:31:15,037 - DEBUG - _trace - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'transfer-encoding', b'chunked'), (b'content-type', b'application/json'), (b'content-encoding', b'gzip'), (b'vary', b'accept-encoding, Origin, Access-Control-Request-Method, Access-Control-Request-Headers'), (b'date', b'Sun, 23 Mar 2025 23:31:14 GMT')])
+2025-03-23 19:31:15,038 - DEBUG - _trace - receive_response_body.started request=<Request [b'POST']>
+2025-03-23 19:31:15,039 - DEBUG - _trace - receive_response_body.complete
+2025-03-23 19:31:15,039 - DEBUG - _trace - response_closed.started
+2025-03-23 19:31:15,039 - DEBUG - _trace - response_closed.complete
+2025-03-23 19:31:15,039 - DEBUG - _trace - close.started
+2025-03-23 19:31:15,039 - DEBUG - _trace - close.complete
+2025-03-23 19:31:32,273 - DEBUG - _trace - connect_tcp.started host='localhost' port=6333 local_address=None timeout=1000 socket_options=None
+2025-03-23 19:31:32,287 - DEBUG - _trace - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001B6D0963100>
+2025-03-23 19:31:32,287 - DEBUG - _trace - send_request_headers.started request=<Request [b'POST']>
+2025-03-23 19:31:32,288 - DEBUG - _trace - send_request_headers.complete
+2025-03-23 19:31:32,288 - DEBUG - _trace - send_request_body.started request=<Request [b'POST']>
+2025-03-23 19:31:32,288 - DEBUG - _trace - send_request_body.complete
+2025-03-23 19:31:32,288 - DEBUG - _trace - receive_response_headers.started request=<Request [b'POST']>
+2025-03-23 19:31:32,310 - DEBUG - _trace - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'transfer-encoding', b'chunked'), (b'vary', b'accept-encoding, Origin, Access-Control-Request-Method, Access-Control-Request-Headers'), (b'content-type', b'application/json'), (b'content-encoding', b'gzip'), (b'date', b'Sun, 23 Mar 2025 23:31:31 GMT')])
+2025-03-23 19:31:32,311 - DEBUG - _trace - receive_response_body.started request=<Request [b'POST']>
+2025-03-23 19:31:32,312 - DEBUG - _trace - receive_response_body.complete
+2025-03-23 19:31:32,312 - DEBUG - _trace - response_closed.started
+2025-03-23 19:31:32,312 - DEBUG - _trace - response_closed.complete
+2025-03-23 19:31:32,312 - DEBUG - _trace - close.started
+2025-03-23 19:31:32,313 - DEBUG - _trace - close.complete

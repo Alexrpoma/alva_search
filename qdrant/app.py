@@ -3,11 +3,10 @@ import logging
 from qdrant_client import QdrantClient
 from sentence_transformers import SentenceTransformer
 
+from config.logging_config import setup_logging
 from services import DataBaseService, QdrantConnect
 from crawler_mock import data
 from services.transformer_service import TransformerService
-
-from qdrant.config import setup_logging
 
 
 class QdrantSearch:
