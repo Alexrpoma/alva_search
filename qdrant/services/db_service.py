@@ -27,9 +27,27 @@ class DataBaseService:
                 return True
             else:
                 logging.info(f"Collection '{collection_name}' already exists")
-                return True
+                return False
         except Exception as e:
             logging.error(f"Create collection error: {e}")
+            return False
+
+    def delete_collection(self, collection_name: str):
+        try:
+            collections = self.__client.get_collections().collections
+            collection_names = [col.name for col in collections]
+            if collection_name in collection_names:
+                self.__client.delete_collection(
+                    collection_name=collection_name,
+                    timeout=1000
+                )
+                logging.info(f"Collection '{collection_name}' deleted")
+                return True
+            else:
+                logging.info(f"Collection '{collection_name}' doesn't exists")
+                return False
+        except Exception as e:
+            logging.error(f"Delete collection error: {e}")
             return False
 
     def upload_data(self, collection_name: str, data: list):

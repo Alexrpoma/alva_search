@@ -41,6 +41,13 @@ async def create_collection(collection_name: str):
     else:
         raise HTTPException(status_code=500, detail="Failed to create collection")
 
+@app.delete("/api/{collection_name}/delete")
+async def delete_collection(collection_name: str):
+    if db_service.delete_collection(collection_name):
+        return {"message": f"Collection '{collection_name}' deleted successfully"}
+    else:
+        raise HTTPException(status_code=500, detail="Failed to delete collection.")
+
 @app.post("/api/upload-data")
 async def upload_data(upload_data: UploadData):
     if db_service.upload_data(upload_data.collection_name, upload_data.data):
