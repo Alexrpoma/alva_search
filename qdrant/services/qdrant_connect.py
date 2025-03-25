@@ -13,7 +13,7 @@ class QdrantConnect:
             config = configparser.ConfigParser()
 
             try:
-                config.read('../config.ini')
+                config.read('config.ini')
                 cls._instance.__host = config.get('QDRANT', 'HOST')
                 cls._instance.__port = config.getint('QDRANT', 'PORT')
                 cls._instance.__grpc_port = config.getint('QDRANT', 'GRPC_PORT')

@@ -5,9 +5,9 @@ from qdrant import SearchService, DataBaseService
 from config.logging_config import setup_logging
 
 
-app = FastAPI()
-
 search_service = SearchService()
+
+app = FastAPI()
 db_service = DataBaseService()
 
 """
