@@ -19,15 +19,15 @@ root:
   level: DEBUG
   handlers: [console, file]
 loggers:
+  uvicorn:
+    level: INFO
+    handlers: [ console ]
+    propagate: no
   sentence_transformers:
     level: INFO
     handlers: [ console ]
     propagate: no
   httpx:
-    level: INFO
-    handlers: [ console ]
-    propagate: no
-  fastapi:
     level: INFO
     handlers: [ console ]
     propagate: no

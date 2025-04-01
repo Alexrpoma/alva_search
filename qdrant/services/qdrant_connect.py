@@ -19,9 +19,9 @@ class QdrantConnect:
                 cls._instance.__grpc_port = config.getint('QDRANT', 'GRPC_PORT')
 
                 cls._instance.__client = QdrantClient(url=f"{cls._instance.__host}:{cls._instance.__port}")
-                logging.info(f"HTTP_PORT: {cls._instance.__port} - OK")
-                cls._instance.__grpc_client = QdrantClient(host=cls._instance.__host, grpc_port=cls._instance.__grpc_port, prefer_grpc=True)
-                logging.info(f"GRPC_PORT: {cls._instance.__grpc_port} - OK")
+                cls._instance.__grpc_client = QdrantClient(host=cls._instance.__host,
+                                                           grpc_port=cls._instance.__grpc_port,
+                                                           prefer_grpc=True)
             except Exception as e:
                 logging.error(f"Failed: {e}")
         return cls._instance

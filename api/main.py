@@ -1,47 +1,49 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, status
+from fastapi.middleware.cors import CORSMiddleware
 
 from api.models import SearchQuery, UploadData, UpdatePoint, DeletePoint, GetPoint, SearchResponse
+from context_llm import LLMService
 from qdrant import SearchService, DataBaseService
 from config.logging_config import setup_logging
 
-
+setup_logging()
 search_service = SearchService()
-
-app = FastAPI()
 db_service = DataBaseService()
+llm_service = LLMService()
 
-"""
-API Endpoints
-    Client:
-        /api/search - Search for a query in a collection
-    Qdrant DB:
-        /api/{collection_name}/create - Create a collection
-        /api/upload-data - Upload data to a collection
-        /api/update-point - Update a point in a collection
-        /api/delete-point - Delete a point in a collection
-        /api/get-point - Get a point from a collection
-        /api/{collection_name}/exists - Check if a collection exists
-"""
+app = FastAPI(title="Alva Search API",
+              description="API for searching in Qdrant collections and managing data.",
+              version="1.0.0")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.post("/api/search")
 async def search(search_query: SearchQuery):
     search_result = search_service.run(search_query.collection_name, search_query.query)
     if search_result:
-        response = []
+        data = []
         for point in search_result:
-            response.append(SearchResponse(**point.payload))
-        return response
+            payload = point.payload
+            payload["client_id"] = search_query.client_id
+            data.append(SearchResponse(**payload))
+        await llm_service.send_process(data[0])
+        return data
     else:
         raise HTTPException(status_code=404, detail="No results found")
 
-@app.post("/api/{collection_name}/create")
+@app.post("/api/collections/{collection_name}", status_code=status.HTTP_201_CREATED)
 async def create_collection(collection_name: str):
     if db_service.create_collection(collection_name):
         return {"message": f"Collection '{collection_name}' created successfully"}
     else:
         raise HTTPException(status_code=500, detail="Failed to create collection")
 
-@app.delete("/api/{collection_name}/delete")
+@app.delete("/api/collections/{collection_name}")
 async def delete_collection(collection_name: str):
     if db_service.delete_collection(collection_name):
         return {"message": f"Collection '{collection_name}' deleted successfully"}
@@ -77,12 +79,11 @@ async def get_point(get_point: GetPoint):
     else:
         raise HTTPException(status_code=404, detail="Point not found")
 
-@app.get("/api/{collection_name}/exists")
+@app.get("/api/collections/{collection_name}/exists")
 async def collection_exists(collection_name: str):
     exists = db_service.collection_exist(collection_name)
     return {"exists": exists}
 
 if __name__ == "__main__":
-    setup_logging()
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
