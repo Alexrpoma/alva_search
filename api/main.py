@@ -28,9 +28,10 @@ async def search(search_query: SearchQuery):
     if search_result:
         data = []
         for point in search_result:
-            payload = point.payload
-            payload["client_id"] = search_query.client_id
-            data.append(SearchResponse(**payload))
+            qdrant_results = point.payload
+            qdrant_results["client_id"] = search_query.client_id
+            qdrant_results["score"] = point.score
+            data.append(SearchResponse(**qdrant_results))
         await llm_service.send_process(data[0])
         return data
     else:

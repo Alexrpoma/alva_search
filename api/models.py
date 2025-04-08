@@ -2,15 +2,17 @@ from pydantic import BaseModel
 
 
 class SearchQuery(BaseModel):
+    client_id: str
     collection_name: str
     query: str
-    client_id: str
 
 class SearchResponse(BaseModel):
     client_id: str
     summary: str
     language: str
     url: str
+    category: str
+    score: float
 
 class UploadData(BaseModel):
     collection_name: str
